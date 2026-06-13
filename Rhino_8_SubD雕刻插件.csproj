@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <OutputType>Library</OutputType>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>SubDSculptTest</RootNamespace>
+    <AssemblyName>SubDSculptTest</AssemblyName>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <Target Name="CopyRhp" AfterTargets="Build">
+    <Copy SourceFiles="$(OutputPath)$(AssemblyName).dll" DestinationFiles="$(OutputPath)$(AssemblyName).rhp" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="RhinoCommon" Version="8.*" IncludeAssets="compile; build" PrivateAssets="all" />
+    <PackageReference Include="Eto.Forms" Version="2.8.*" IncludeAssets="compile" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubDSculptTestPlugin.cs" />
+    <Compile Include="TestSubDCommand.cs" />
+    <Compile Include="TestModifyVertexCommand.cs" />
+    <Compile Include="TestBrushSimCommand.cs" />
+    <Compile Include="BrushDisplayConduit.cs" />
+    <Compile Include="InteractiveBrushCommand.cs" />
+    <Compile Include="MeshSculptBrushCommand.cs" />
+    <Compile Include="NurbsSculptBrushCommand.cs" />
+    <Compile Include="BrushDeformer.cs" />
+    <Compile Include="SubDTopologyHelper.cs" />
+    <Compile Include="MaskData.cs" />
+    <Compile Include="SculptPanel.cs" />
+  </ItemGroup>
+
+</Project>
